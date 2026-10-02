@@ -1560,3 +1560,136 @@ h1, h2, h3, h4, h5, h6 {
   .featured-project-meta { gap: 12px; flex-direction: column; align-items: flex-start; }
   .flow-legend { gap: 12px; font-size: 11.5px; }
 }
+/* CMS-ready project case study */
+.featured-project-image { position: relative; margin: 0; }
+.featured-project-image figcaption { position: absolute; inset: auto 0 0; padding: 11px 16px; color: #fff; background: linear-gradient(transparent, rgba(10, 20, 15, .78)); font-size: 12px; }
+.featured-project-copy .project-lede { color: var(--text-main); font-size: 20px; line-height: 1.5; font-weight: 600; }
+.case-study { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 46px; }
+.case-study-section { padding: 28px; border: 1px solid var(--border-light); border-radius: var(--radius-lg); background: #fff; }
+.case-study-section .eyebrow { display: block; margin-bottom: 12px; }
+.case-study-section h3 { margin: 10px 0 7px; font-size: 18px; }
+.case-study-section p { margin: 0 0 16px; color: var(--text-muted); line-height: 1.7; }
+.case-study-section p:last-child { margin-bottom: 0; }
+.case-study-contact { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 20px; padding: 25px 30px; border-radius: var(--radius-lg); background: #f2f5ef; }
+.case-study-contact h3 { margin: 6px 0 0; font-size: 21px; }
+.project-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border-light); color: var(--text-muted); font-size: 13px; }
+.project-status-label { font-weight: 600; }
+.project-card-category { color: var(--text-muted); }
+@media (max-width: 760px) {
+  .case-study { grid-template-columns: 1fr; }
+  .case-study-contact { align-items: flex-start; flex-direction: column; }
+  .case-study-section { padding: 23px; }
+}
+
+/* CMS rendered project media and detail lists */
+.project-image-placeholder { display: flex; width: 100%; height: 100%; min-height: 220px; align-items: center; justify-content: center; color: var(--text-muted); background: linear-gradient(135deg, #e9eee8, #d7e0d7); font-size: 13px; }
+.project-image .project-image-placeholder { position: absolute; inset: 0; }
+.case-study-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.case-study-gallery img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; }
+.project-timeline { display: grid; gap: 12px; padding: 0; list-style: none; }
+.project-timeline li { display: grid; gap: 4px; color: var(--text-muted); }
+.project-timeline li strong { color: var(--text-main); }
+.status-complete { background: rgba(47, 125, 77, .1); color: #27653e; border: 1px solid rgba(47, 125, 77, .32); }
+.featured-project-copy p, .case-study-section p { white-space: pre-line; }
+
+/* Keep the energy-solutions dropdown reachable while the pointer crosses the 18px visual gap. */
+.nav-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 0;
+  right: 0;
+  height: 18px;
+}
+@media (max-width: 760px) {
+  .nav-dropdown-menu::before { content: none; }
+}
+
+/* Crisp, aligned chevron for the Energy Solutions navigation dropdown. */
+.nav-chevron {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  font-size: 0;
+  line-height: 0;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform .2s ease;
+}
+.nav-dropdown:hover .nav-chevron,
+.nav-dropdown:focus-within .nav-chevron {
+  transform: translateY(1px) rotate(225deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-chevron { transition: none; }
+}
+
+/* Mobile/tablet navigation panel */
+@media (max-width: 960px) {
+  .nav-menu {
+    top: 74px;
+    max-height: calc(100vh - 74px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    align-items: stretch;
+    gap: 4px;
+    padding: 14px 18px 24px;
+  }
+  .nav-menu > a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    width: 100%;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .nav-menu a.active::after { content: none; }
+  .nav-dropdown {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 5px 0 8px;
+    padding: 0 10px 8px;
+    border-radius: 14px;
+    background: var(--bg-surface);
+  }
+  .nav-dropdown-trigger {
+    width: 100%;
+    min-height: 48px;
+    justify-content: space-between;
+    padding: 12px 6px;
+    border-bottom: 1px solid var(--border-light);
+    font-weight: 700;
+  }
+  .nav-dropdown-menu,
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    position: static;
+    display: block;
+    width: 100%;
+    padding: 6px 0 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+  }
+  .nav-dropdown-menu::before { content: none; }
+  .nav-dropdown-menu a {
+    display: flex !important;
+    align-items: flex-start !important;
+    padding: 10px 8px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  .nav-dropdown-menu a:hover { background: #fff; }
+  .nav-dropdown-menu small { font-size: 12px; line-height: 1.4; }
+  .nav-chevron { transform: translateY(1px) rotate(225deg); }
+}
+
